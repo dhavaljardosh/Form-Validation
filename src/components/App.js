@@ -23,8 +23,8 @@ export default class App extends Component {
 
 const style = {
     outerGrid: {
-        height: '100vh',
-        display: 'flex'
+        display: 'flex',
+        minHeight:'100vh'
     },
     welcomeBlock: {
         display: 'flex',

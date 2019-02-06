@@ -8,6 +8,7 @@ class Form extends Component {
         lastName: '',
         address: '',
         address2: '',
+        phone:'',
         error: ''
     }
 
@@ -20,9 +21,11 @@ class Form extends Component {
         let user = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            address: this.state.address
+            address: this.state.address,
+            phone:this.state.phone
         }
         let error = {};
+        console.log(user.phone.length)
         // Resetting the error state and in the callback function, using we're checking for errors
         this.setState({
             error: ''
@@ -38,6 +41,12 @@ class Form extends Component {
                     error[item] = false;
                 }
             }
+            if(user['phone'].length !== 15){
+                error['phone'] = false;
+                reject = true;
+            }else{
+                error['phone'] = false;
+            }
 
             if (reject) {
                 this.setState({
@@ -45,12 +54,15 @@ class Form extends Component {
                 }, () => console.log(this.state.error))
 
             } else {
-                alert(`First Name : ${this.state.firstName} \n
+                alert(`
+                       First Name : ${this.state.firstName} \n
                        Last Name: ${this.state.lastName} \n
                        Address: ${this.state.address} \n
-                       Address 2: ${this.state.address2
-                    ? this.state.address2
-                    : 'Not Provided'}`)
+                       Address 2: ${this.state.address2? this.state.address2: 'Not Provided'}
+                       Phone:${this.state.phone}
+                    `
+                       
+                    )
             }
         })
     }
@@ -77,6 +89,12 @@ class Form extends Component {
                     label="ADDRESS 2 (OPTIONAL)"
                     handleChange={this.handleChange}
                     stateName="address2"/>
+                <TextField
+                    label="PHONE"
+                    handleChange={this.handleChange}
+                    stateName="phone"
+                    error={this.state.error}
+                    />
                 <Button onClick={this.handleSubmit}/>
             </form>
         )
