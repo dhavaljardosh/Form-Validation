@@ -6,3 +6,5 @@ After cloning the Repo, get to this particular folder through your terminal. And
 2. `npm start`
 
 This will start the server on localhost 3000(by default)
+
+Phone Number auto-format -> (436) 125-4633
